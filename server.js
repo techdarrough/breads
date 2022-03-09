@@ -11,6 +11,7 @@ const path = require('path')
 console.log(PORT)
 
 // MIDDLEWARE
+
 app.set('views',__dirname + '/views')
 // app.set('views', __dirname);
 app.set('view engine', 'jsx')
