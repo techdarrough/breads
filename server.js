@@ -7,7 +7,14 @@ const express = require('express')
 require('dotenv').config()
 const PORT = process.env.PORT
 const app = express()
+const path = require('path')
 console.log(PORT)
+
+// MIDDLEWARE
+app.set('views',__dirname + '/views')
+// app.set('views', __dirname);
+app.set('view engine', 'jsx')
+app.engine('jsx', require('express-react-views').createEngine())
 
 //routes
 
