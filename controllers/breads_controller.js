@@ -1,5 +1,6 @@
 const express = require('express')
-const breads = express.Router()
+const req = require('express/lib/request')
+const breads = express.Router() //the route - refactor and rename at end of class
 const Bread = require('../models/breads')
 
 // INDEX
@@ -21,6 +22,13 @@ breads.get('/:arrayIndex', (req, res) => {
   } else {
     res.send('404')
   }
+})
+
+//create 
+
+breads.post('/', (req, res) => {
+  req.body.hasGluten === 'on' ? req.body.hasGluten === 'true' : req.body.hasGluten === 'false';
+  Bread.push(req.body)
 })
 
 module.exports = breads
