@@ -21,6 +21,7 @@ function Show ({bread, idx}) {
     <input type="submit" value={`Delete ${bread.name}`} />
   </form>
   <li><a href="/breads">Go home</a></li>
+  <a href={`/breads/${idx}/edit`}><button>Edit</button></a>
 </Default>
       )
   }
