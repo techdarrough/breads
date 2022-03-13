@@ -1,5 +1,6 @@
 const express = require('express')
 const req = require('express/lib/request')
+const { splice } = require('../models/breads')
 const breads = express.Router() //the route - refactor and rename at end of class
 const Bread = require('../models/breads')
 
@@ -21,14 +22,15 @@ breads.get('/new', (req, res) => {
 breads.get('/:arrayIndex', (req, res) => {
   if (Bread[req.params.arrayIndex]) {
     res.render('Show', {
-      bread:Bread[req.params.arrayIndex]
+      bread:Bread[req.params.arrayIndex],
+      idx: req.params.arrayIndex,
     })
   } else {
-    res.send('404')
+    res.status(404).send('404')
   }
 })
 
-//create 
+//Create 
 
 breads.post('/', (req, res) => {
   if (!req.body.image ) {
@@ -37,6 +39,13 @@ breads.post('/', (req, res) => {
   req.body.hasGluten === 'on' ? req.body.hasGluten === 'true' : req.body.hasGluten === 'false';
   Bread.push(req.body);
   res.redirect('/breads');
+})
+
+//Delete 
+
+breads.delete('/:arrayIndex', (req, res) => {
+  Bread.splice(req.params.arrayIndex, 1);
+  res.status(303).redirect('/breads')
 })
 
 module.exports = breads
