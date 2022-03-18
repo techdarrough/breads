@@ -1,8 +1,8 @@
 const express = require('express')
 const req = require('express/lib/request')
-const { splice } = require('../models/breads')
+const { splice } = require('../models/breads.js.old')
 const breads = express.Router() //the route - refactor and rename at end of class
-const Bread = require('../models/breads')
+const Bread = require('../models/breads.js.old')
 
 // INDEX
 breads.get('/', (req, res) => {
