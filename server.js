@@ -10,9 +10,13 @@ const PORT = process.env.PORT
 const app = express()
 
 
+
 //Mongoose connector to mongoDB URI
-mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true},
-    () => { console.log(`connected to mongo: ${process.env.MONGO_URI}`)})
+mongoose.connect(process.env.MONGO_URI, 
+    {useNewUrlParser: true, useUnifiedTopology: true})
+    .then( () => { console.log(`connected to mongo: ${process.env.MONGO_URI}`)})
+    .catch(err => console.log(err))
+   
 
 
 
