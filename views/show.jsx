@@ -17,11 +17,13 @@ function Show ({bread}) {
     have gluten.
   </p>
   <img src={bread.image} alt={bread.name} />
-  <form action={`/breads/${bread.id}?_method=DELETE`} method="POST" >
+  <p>{bread.getBakedBy()}</p>
+  
+  <a href={`/breads/${bread.id}/edit`}><button>Edit</button></a>
+    <form action={`/breads/${bread.id}?_method=DELETE`} method="POST" >
     <input type="submit" value={`Delete ${bread.name}`} />
   </form>
-  <li><a href="/breads">Go home</a></li>
-  <a href={`/breads/${bread.id}/edit`}><button>Edit</button></a>
+  <li><a href="/breads"><button>Go home</button></a></li>
 </Default>
       )
   }

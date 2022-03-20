@@ -11,7 +11,7 @@ function Index ({breads})  {
           </a>
         </div>
 
-        {/* <p>I have {breads[0].name} bread!</p> */}
+        {/* <p>I have {breads.name} bread!</p> */}
         <ul>
           {breads.map((bread) => {
             return (
