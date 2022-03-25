@@ -1,4 +1,3 @@
-
 // Dependencies
 const Bread = require("./bread");
 const mongoose = require("mongoose");
@@ -28,13 +27,12 @@ bakerSchema.virtual("breads", {
   foreignField: "baker",
 });
 
-// hooks 
-bakerSchema.post('findOneAndDelete', function() {
-  Bread.deleteMany({ baker: this._conditions._id })
-      .then(deleteStatus => {
-          console.log(deleteStatus)
-      })
-})
+// hooks
+bakerSchema.post("findOneAndDelete", function () {
+  Bread.deleteMany({ baker: this._conditions._id }).then((deleteStatus) => {
+    console.log(deleteStatus);
+  });
+});
 
 // Model & Export
 const Baker = mongoose.model("Baker", bakerSchema);
